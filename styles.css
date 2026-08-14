@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #0a0a12;
+  color: #e8e8f0;
+  font-family: "Menlo", "Consolas", monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 10px;
+}
+
+#hud {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  padding: 6px 10px;
+  background: #14141f;
+  border: 1px solid #2a2a3a;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+#hud-hp .hp-cell {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 3px;
+  border-radius: 3px;
+  background: #2a2a3a;
+}
+
+#hud-hp .hp-cell.full {
+  background: #4ade80;
+}
+
+#game {
+  background: #0d0d16;
+  border: 1px solid #2a2a3a;
+  border-radius: 8px;
+}
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: rgba(10, 10, 18, 0.92);
+}
+
+#overlay.hidden {
+  display: none;
+}
+
+#overlay-title {
+  font-size: 42px;
+  letter-spacing: 4px;
+  color: #fb923c;
+  text-shadow: 0 0 20px rgba(251, 146, 60, 0.6);
+}
+
+#overlay-sub {
+  font-size: 14px;
+  color: #9aa0b0;
+}
+
+#overlay-btn {
+  margin-top: 8px;
+  padding: 10px 32px;
+  font-size: 16px;
+  font-family: inherit;
+  color: #0a0a12;
+  background: #fb923c;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#overlay-btn:hover {
+  background: #fdba74;
+}

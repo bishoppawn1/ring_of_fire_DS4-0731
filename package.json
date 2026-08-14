@@ -1,0 +1,12 @@
+{
+  "name": "ring-of-fire",
+  "version": "1.0.0",
+  "description": "A fast, readable bullet hell game built around circular danger patterns.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test 'test/*.test.js'",
+    "test:run": "node test/run.js",
+    "start": "node scripts/serve.js"
+  },
+  "license": "MIT"
+}
