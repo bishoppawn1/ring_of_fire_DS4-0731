@@ -30,6 +30,8 @@ export class Game {
   nextFloor() {
     this.state.floor += 1;
     this.state.floorCleared = false;
+    const p = this.state.player;
+    p.hp = Math.min(p.maxHp, p.hp + CONFIG.PLAYER.regenPerFloor);
     this.startFloor();
   }
 
@@ -39,14 +41,6 @@ export class Game {
 
     s.time += dt;
     s.shake = Math.max(0, s.shake - dt);
-
-    if (s.floorTransitionTimer > 0) {
-      s.floorTransitionTimer -= dt;
-      if (s.floorTransitionTimer <= 0) {
-        this.nextFloor();
-      }
-      return;
-    }
 
     updatePlayer(s, input, dt);
     updateEnemies(s, dt);
@@ -96,7 +90,7 @@ export class Game {
       const b = s.enemyBullets[i];
       if (circlesOverlap(b.x, b.y, b.radius, p.x, p.y, CONFIG.PLAYER.radius)) {
         s.enemyBullets.splice(i, 1);
-        damagePlayer(s, 1);
+        damagePlayer(s, CONFIG.BULLET.damage);
       }
     }
 
@@ -108,7 +102,7 @@ export class Game {
     }
 
     if (s.boss && circlesOverlap(s.boss.x, s.boss.y, s.boss.radius, p.x, p.y, CONFIG.PLAYER.radius)) {
-      damagePlayer(s, 1);
+      damagePlayer(s, CONFIG.BOSS.touchDamage);
     }
   }
 
@@ -123,7 +117,7 @@ export class Game {
     if (s.floorCleared) return;
     if (s.enemies.length === 0 && !s.boss) {
       s.floorCleared = true;
-      s.floorTransitionTimer = CONFIG.FLOOR.transitionTime;
+      this.nextFloor();
     }
   }
 }

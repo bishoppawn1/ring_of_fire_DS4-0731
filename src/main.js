@@ -1,11 +1,11 @@
 import { Game } from './game.js';
 import { createRenderer } from './renderer.js';
 import { attachInput } from './input.js';
-import * as CONFIG from './config.js';
 
 const canvas = document.getElementById('game');
 const hudFloor = document.getElementById('hud-floor');
 const hudHp = document.getElementById('hud-hp');
+const hudHpFill = document.getElementById('hud-hp-fill');
 const hudScore = document.getElementById('hud-score');
 const overlay = document.getElementById('overlay');
 const overlayTitle = document.getElementById('overlay-title');
@@ -22,12 +22,8 @@ let last = 0;
 function renderHud() {
   hudFloor.textContent = `Floor ${game.state.floor}`;
   hudScore.textContent = game.state.score;
-  const hp = game.state.player.hp;
-  let html = '';
-  for (let i = 0; i < CONFIG.PLAYER.maxHp; i++) {
-    html += `<span class="hp-cell ${i < hp ? 'full' : ''}"></span>`;
-  }
-  hudHp.innerHTML = html;
+  const pct = Math.max(0, (game.state.player.hp / game.state.player.maxHp) * 100);
+  hudHpFill.style.width = `${pct}%`;
 }
 
 function frame(now) {

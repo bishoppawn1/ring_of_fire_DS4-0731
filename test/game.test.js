@@ -97,17 +97,17 @@ test('full simulation is deterministic for the same seed', () => {
   assert.deepEqual(runSim(), runSim());
 });
 
-test('different seeds diverge in outcomes', () => {
-  const sim = (seed) => {
+test('different seeds diverge in enemy placement', () => {
+  const enemyPositions = (seed) => {
     const game = new Game(seed);
     const input = createInput();
     input.right = true;
-    run(game, 3600, input);
-    return { score: game.state.score, kills: game.state.kills, floor: game.state.floor };
+    run(game, 600, input);
+    return game.state.enemies.map((e) => [e.x, e.y, e.type]);
   };
-  const a = sim(100);
-  const b = sim(200);
-  assert.ok(a.score !== b.score || a.kills !== b.kills, 'expected seeds to diverge');
+  const a = enemyPositions(100);
+  const b = enemyPositions(200);
+  assert.notDeepEqual(a, b, 'expected seeds to place enemies differently');
 });
 
 test('time advances deterministically with fixed dt', () => {

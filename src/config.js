@@ -1,8 +1,9 @@
-export const ARENA_R = 360;
+export const ARENA_R = 500;
 
 export const PLAYER = {
   radius: 10,
-  maxHp: 5,
+  maxHp: 100,
+  regenPerFloor: 25,
   accel: 1400,
   maxSpeed: 320,
   friction: 0.86,
@@ -19,11 +20,16 @@ export const PLAYER = {
 export const ENEMY = {
   radius: 18,
   baseHp: 3,
-  touchDamage: 1,
+  touchDamage: 15,
 };
 
 export const BULLET = {
   radius: 5,
+  damage: 12,
+};
+
+export const BOSS = {
+  touchDamage: 18,
 };
 
 export const FLOOR = {
@@ -31,7 +37,6 @@ export const FLOOR = {
   enemiesPerFloor: 1,
   maxEnemies: 9,
   bossEvery: 5,
-  transitionTime: 1.2,
 };
 
 export const COLORS = {

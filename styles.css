@@ -19,7 +19,8 @@ body {
 #hud {
   display: flex;
   justify-content: space-between;
-  width: 800px;
+  align-items: center;
+  width: 1100px;
   padding: 6px 10px;
   background: #14141f;
   border: 1px solid #2a2a3a;
@@ -27,17 +28,20 @@ body {
   font-size: 14px;
 }
 
-#hud-hp .hp-cell {
-  display: inline-block;
-  width: 14px;
+#hud-hp {
+  flex: 1;
+  margin: 0 16px;
   height: 14px;
-  margin-right: 3px;
-  border-radius: 3px;
   background: #2a2a3a;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
-#hud-hp .hp-cell.full {
-  background: #4ade80;
+#hud-hp-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #4ade80, #a3e635);
+  transition: width 0.15s ease;
 }
 
 #game {
