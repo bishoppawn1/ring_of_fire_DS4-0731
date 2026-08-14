@@ -8,6 +8,8 @@ A fast, readable bullet hell game built around circular danger patterns, tight m
 
 > Note: enable GitHub Pages in **Settings → Pages** (deploy from the `main` branch) to make the link live.
 
+**Tokens used to build:** 33.2k
+
 ## Controls
 
 - **WASD / Arrow keys** — move
